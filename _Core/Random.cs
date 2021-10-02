@@ -120,6 +120,13 @@ public static class Rand
         return list[Rand.Int(list.Count)];
     }
 
+    public static T GetRandom<T>(this T[] array)
+    {
+        if (array == null || array.Length == 0)
+            return default;
+        return array[Rand.Int(array.Length)];
+    }
+
     public static List<T> Shuffle<T>(this List<T> list)
     {
         for (int i = 0; i < list.Count; ++i)

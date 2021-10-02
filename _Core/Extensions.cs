@@ -238,6 +238,31 @@ public static class Enum<T> where T : System.Enum
     public static readonly int Count = Names.Length;
     public static readonly T[] Values = System.Enum.GetValues(typeof(T)).Cast<T>().ToArray();
 
+    public static bool TryGetValueFromString(string name, out T value)
+    {
+        for(int i = 0; i < Names.Length; ++ i)
+        {
+            if (Names[i] == name)
+            {
+                value = Values[i];
+                return true;
+            }
+        }
+        
+        name = name.ToLower();
+        for(int i = 0; i < Names.Length; ++ i)
+        {
+            if (Names[i].ToLower() == name)
+            {
+                value = Values[i];
+                return true;
+            }
+        }
+
+        value = default;
+        return false;
+    }
+
     public static bool TryGetValueFromInt(int integer, out T Value)
     {
         foreach(var value in Values)
@@ -295,6 +320,10 @@ public static class GodotExtensions
             return null;
         }
     }
+
+    public static T GetChild<T>(this Godot.Node node, int index) where T: Godot.Node
+        => node.GetChild(index) as T;
+    
 
     public static T FindOrAddChild<T>(this Godot.Node node) where T: Godot.Node, new()
     {

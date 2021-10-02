@@ -113,13 +113,13 @@ public static class Signals
     public static Emitter OnMouseExit<Emitter>(this Emitter emitter, System.Action action) where Emitter : Godot.Control
         => Connect("mouse_exited", emitter, action);
 
-    public static Emitter OnButtonDown<Emitter>(this Emitter emitter, System.Action action) where Emitter : Godot.Button
+    public static Emitter OnButtonDown<Emitter>(this Emitter emitter, System.Action action) where Emitter : Godot.BaseButton
         => Connect("button_down", emitter, action);
 
-    public static Emitter OnButtonUp<Emitter>(this Emitter emitter, System.Action action) where Emitter : Godot.Button
+    public static Emitter OnButtonUp<Emitter>(this Emitter emitter, System.Action action) where Emitter : Godot.BaseButton
         => Connect("button_up", emitter, action);
 
-    public static Emitter OnToggle<Emitter>(this Emitter emitter, System.Action<bool> action) where Emitter : Godot.Button
+    public static Emitter OnToggle<Emitter>(this Emitter emitter, System.Action<bool> action) where Emitter : Godot.BaseButton
         => Connect("toggled", emitter, action);
 
     public static Emitter OnReady<Emitter>(this Emitter emitter, System.Action action) where Emitter : Godot.Node

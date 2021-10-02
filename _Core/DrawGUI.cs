@@ -31,7 +31,7 @@ static class GUI
             {
                 _layer = new CanvasLayer();
                 Layout.position = new Vector2(16, 16);
-                Coroutine.Delay(() => Scene.Current.AddChild(_layer), 1);
+                Coroutine.DelayFrames(1, () => Scene.Current.AddChild(_layer));
             }
             return _layer;
         }

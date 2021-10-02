@@ -35,12 +35,30 @@ public static class Coroutine
     /// <summary>
     /// Delays an action to be performed until after frames have passed
     /// </summary>
-    public static void Delay(in System.Action action, int frames = 0)
+    public static void DelayFrames(int frames, System.Action action)
     {
-        if (frame_delayed.Length == frame_delay_count)
-            Array.Resize(ref frame_delayed, frame_delayed.Length * 2);
-        frame_delayed[frame_delay_count] = (action, Time.frame_count + frames);
-        frame_delay_count ++;
+        int targetFrame = Time.frame_count + frames;
+        Start(() => {
+            if (Time.frame_count >= targetFrame)
+            {
+                action(); 
+                return false;
+            }
+            return true;
+        });
+    }
+
+    public static void DelaySeconds(float seconds, System.Action action)
+    {
+        float targetTime = Time.seconds_since_startup + seconds;
+        Start(() => {
+            if (Time.seconds_since_startup > targetTime)
+            {
+                action(); 
+                return false;
+            }
+            return true;
+        });
     }
 
     public static void ClearAllCoroutines()
@@ -49,16 +67,9 @@ public static class Coroutine
         coroutine_count = 0;
     }
 
-    public static void ClearAllDelayedActions()
-    {
-        frame_delayed.Clear();
-        frame_delay_count = 0;
-    }
-
-    static (System.Action Action, int frame)[] frame_delayed = new (System.Action, int)[16];
     static System.Func<bool>[] coroutines = new System.Func<bool>[16];
 
-    static int coroutine_count, frame_delay_count = 0;
+    static int coroutine_count;
 
     [Event]
     static void Update(Events.FrameUpdate args)
@@ -70,18 +81,6 @@ public static class Coroutine
                 coroutine_count --;
                 coroutines[coroutine_count] = coroutines[i];
                 coroutines[coroutine_count] = default;
-            }
-        }
-
-        var frame = Time.frame_count;
-        for(int i = frame_delay_count - 1; i  >= 0; --i)
-        {            
-            if (frame_delayed[i].frame >= frame)
-            {
-                frame_delay_count --;
-                frame_delayed[i].Action();
-                frame_delayed[i] = frame_delayed[frame_delay_count];
-                frame_delayed[frame_delay_count] = default;
             }
         }
     }

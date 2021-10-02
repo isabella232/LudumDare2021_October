@@ -360,13 +360,12 @@ public struct Debug
 
         public static void Update()
         {
-            if (!Debug.Enable && control.IsValid())
+            if (!Debug.Enable)
             {
-                control.Visible = false;
+                if (control.IsValid())
+                    control.QueueFree();
                 return;
             }
-            else if (control.IsValid())
-                control.Visible = true;
 
             var label_height = 22f;
             if (!control.IsValid())
@@ -412,6 +411,10 @@ public struct Debug
                     label_container.SetAnchors(scroll_width, 1, 0, 1);
                 }
             }
+
+            if (Labels.Count == 0)
+                control.Visible = false;
+            else control.Visible = true;
 
             var count = (int)(control.RectSize.y / label_height);
             if (drawn_labels.Length < count)

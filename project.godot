@@ -11,12 +11,17 @@ config_version=4
 [application]
 
 config/name="Ludum Dare 2021 October"
-run/main_scene="res://Scenes/Game.tscn"
+run/main_scene="res://Scenes/Title/TitleScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Bootstrap="*res://_Core/Bootstrap.cs"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [physics]
 
