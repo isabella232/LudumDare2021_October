@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scenes/Game/Game.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Game/AreaSelection.cs" type="Script" id=2]
@@ -18,6 +18,77 @@
 [ext_resource path="res://Assets/Graveyard/Graveyard.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Lake/Fish.png" type="Texture" id=17]
 [ext_resource path="res://Assets/Graveyard/Eyeball.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Witch/Annoyed/Annoy0001.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Witch/Annoyed/Annoy0004.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Witch/Annoyed/Annoy0005.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Witch/Annoyed/Annoy0003.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Witch/Annoyed/Annoy0002.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Witch/Heart.png" type="Texture" id=24]
+
+[sub_resource type="Animation" id=4]
+resource_name = "Failure"
+length = 3.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/Annoyed:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.29, 0.4, 0.47, 2.04, 2.15, 2.29 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0.82667, 1.38667 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.04, 1.4 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Success"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/Heart:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3, 2.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 421.809, 121.47 ), Vector2( 421.809, 121.47 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer/Heart:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3, 1.1, 1.8, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -34.7, 17.3, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayer/Heart:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3, 0.5, 0.6, 2.1, 2.2, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1.22503, 1.54248 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.40357, 1.40357 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
@@ -40,7 +111,6 @@ __meta__ = {
 }
 
 [node name="Witch" type="ColorRect" parent="CanvasLayer/Areas"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.85098, 0.580392, 0.580392, 1 )
@@ -68,6 +138,22 @@ margin_bottom = 157.93
 rect_scale = Vector2( 2.91331, 2.91331 )
 text = "I Want something that goes with tea"
 autowrap = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Areas/Witch"]
+anims/Failure = SubResource( 4 )
+anims/Success = SubResource( 5 )
+
+[node name="Heart" type="Sprite" parent="CanvasLayer/Areas/Witch/AnimationPlayer"]
+position = Vector2( 421.809, 121.47 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 24 )
+
+[node name="Annoyed" type="AnimatedSprite" parent="CanvasLayer/Areas/Witch/AnimationPlayer"]
+position = Vector2( 417.805, 98.7781 )
+scale = Vector2( 1e-05, 1e-05 )
+frames = SubResource( 3 )
+frame = 4
+playing = true
 
 [node name="Cave" type="TextureRect" parent="CanvasLayer/Areas"]
 visible = false
@@ -177,6 +263,7 @@ __meta__ = {
 }
 
 [node name="LifeBar" type="ColorRect" parent="CanvasLayer"]
+visible = false
 margin_left = 18.9836
 margin_top = 583.622
 margin_right = 58.9836

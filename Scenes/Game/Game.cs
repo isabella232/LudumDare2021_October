@@ -18,6 +18,7 @@ public class Game : Node
 {
     public items wanted_item, picked_item;
 
+    int wins;
     int count;
 
     public override void _Ready()
@@ -27,23 +28,35 @@ public class Game : Node
         GoTo(Game_Areas.Home);
         ShowAreaSelection();
 
-        this.FindChild<Witch>().SetText(clues.GetRandom());
+        this.FindChild<Witch>().SetText(NextClue());
         foreach (var button in this.FindChild<TakeToWitch>().FindChildren<Button>())
         {
             if (button.Name == "Yes")
             {
-                button.OnButtonDown(() => {
+                button.OnButtonDown(() =>
+                {
                     HidePopup();
                     GoTo(Game_Areas.Home);
-                    this.FindChild<Witch>().SetText(quips.GetRandom());
-                    Coroutine.DelaySeconds(3f, () => 
+                    var witch = this.FindChild<Witch>();
+                    if (wanted_item == picked_item)
                     {
-                        this.FindChild<Witch>().SetText(clues.GetRandom());
+                        witch.SetText(success_quips.GetRandom());
+                        witch.FindChild<AnimationPlayer>().Play("Success");
+                        wins ++;
+                    }
+                    else
+                    {
+                        witch.SetText(failure_quips.GetRandom());
+                        witch.FindChild<AnimationPlayer>().Play("Failure");
+                    }
+                    Coroutine.DelaySeconds(3f, () =>
+                    {
+                        witch.SetText(NextClue());
                         ShowAreaSelection();
-                        count ++;
+                        count++;
                         if (count > 5)
                         {
-                            if (Rand.Float01 > .5f)
+                            if (wins >= 3)
                                 Scene.Load("res://Scenes/Win/Win.tscn");
                             else Scene.Load("res://Scenes/Lose/Lose.tscn");
                         }
@@ -52,20 +65,22 @@ public class Game : Node
             }
             if (button.Name == "No")
             {
-                button.OnButtonDown(() => {
+                button.OnButtonDown(() =>
+                {
                     this.FindChild<TakeToWitch>().Visible = false;
                     ShowAreaSelection();
                 });
             }
         }
 
-        foreach(var button in areas.FindChildren<Godot.TextureButton>())
+        foreach (var button in areas.FindChildren<Godot.TextureButton>())
         {
             if (Enum<items>.TryGetValueFromString(button.Name, out var item))
             {
-                button.OnButtonDown( () => {
+                button.OnButtonDown(() =>
+                {
                     ShowPopUp(item);
-                    Debug.Log("Clicked", item);
+                    picked_item = item;
                 });
             }
             else Debug.Log(button.Name, "does not have a corresponding item");
@@ -80,7 +95,7 @@ public class Game : Node
     public Game_Areas current_area;
     public void GoTo(Game_Areas area)
     {
-        foreach(Control node in this.FindChild<Areas>().GetChildren())
+        foreach (Control node in this.FindChild<Areas>().GetChildren())
         {
             node.Visible = false;
         }
@@ -88,21 +103,42 @@ public class Game : Node
         current_area = area;
     }
 
-    string[] clues = new string[]{
-        "I want an item that makes me sing",
-        "I want something that gives you wings",
-        "I want a hareball",
-        "I want to puke",
-        "No one can see these pretties"
+    string[] failure_quips = new string[]{
+        "No no no you nincom poop",
+        "bubububuuu paaah!",
+        "................",
+        "GAAAAAAAHHH WRONG WRONG WRONG"
     };
 
-    string[] quips = new string[]{
-        "No no no you nincom poop",
+    string[] success_quips = new string[]
+    {
         "Ahh yes that's it exactly",
         "3.. 2... 3.. 1.. eh? what was it again?",
-        "bubububuuu paaah!",
-        "fortune smiles on us both"
+        "Fortune smiles on us both",
+        "Looks like you won't end up in my soup"
     };
+
+    string NextClue()
+    {
+        wanted_item = Enum<items>.Values.GetRandom();
+        
+        Debug.Log(wanted_item);
+        switch (wanted_item)
+        {
+            default:
+            {
+                string[] clues = new string[]{
+                    "I want an item that makes me sing",
+                    "I want something that gives you wings",
+                    "I want a hareball",
+                    "I want to puke",
+                    "No one can see these pretties"
+                };
+                return clues.GetRandom();
+            }
+        }
+    }
+
 
     public void ShowPopUp(items item)
     {
