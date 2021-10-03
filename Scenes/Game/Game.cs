@@ -25,6 +25,7 @@ public class Game : Node
 
         var areas = this.FindChild<Areas>();
         GoTo(Game_Areas.Home);
+        ShowAreaSelection();
 
         this.FindChild<Witch>().SetText(clues.GetRandom());
         foreach (var button in this.FindChild<TakeToWitch>().FindChildren<Button>())
