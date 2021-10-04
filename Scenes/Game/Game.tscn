@@ -152,7 +152,7 @@ texture = ExtResource( 24 )
 position = Vector2( 417.805, 98.7781 )
 scale = Vector2( 1e-05, 1e-05 )
 frames = SubResource( 3 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="Cave" type="TextureRect" parent="CanvasLayer/Areas"]
