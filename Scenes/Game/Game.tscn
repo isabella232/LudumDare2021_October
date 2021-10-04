@@ -103,7 +103,7 @@ resource_name = "Default"
 length = 3.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Beam:modulate")
+tracks/0/path = NodePath("../Beam:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -115,7 +115,7 @@ tracks/0/keys = {
 "values": [ Color( 0.898039, 0.831373, 0.466667, 0 ), Color( 0.898039, 0.831373, 0.466667, 0.462745 ), Color( 0.898039, 0.831373, 0.466667, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Beam:rotation_degrees")
+tracks/1/path = NodePath("../Beam:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -127,7 +127,7 @@ tracks/1/keys = {
 "values": [ -2.78915, 137.609 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Beam2:modulate")
+tracks/2/path = NodePath("../Beam2:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -139,7 +139,7 @@ tracks/2/keys = {
 "values": [ Color( 0.898039, 0.831373, 0.466667, 0.384314 ), Color( 0.898039, 0.831373, 0.466667, 0 ), Color( 0.898039, 0.831373, 0.466667, 0.0240196 ), Color( 0.898039, 0.831373, 0.466667, 0.384314 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Beam2:rotation_degrees")
+tracks/3/path = NodePath("../Beam2:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -352,11 +352,10 @@ texture = ExtResource( 24 )
 position = Vector2( 417.805, 98.7781 )
 scale = Vector2( 1e-05, 1e-05 )
 frames = SubResource( 3 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="Cave" type="TextureRect" parent="CanvasLayer/Areas"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 5 )
@@ -395,35 +394,28 @@ margin_bottom = 587.482
 rect_scale = Vector2( 0.380818, 0.380818 )
 texture_normal = ExtResource( 27 )
 
-[node name="Control" type="Control" parent="CanvasLayer/Areas/Cave"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Beam" type="Sprite" parent="CanvasLayer/Areas/Cave/Control"]
+[node name="Beam" type="Sprite" parent="CanvasLayer/Areas/Cave"]
 modulate = Color( 0.898039, 0.831373, 0.466667, 0 )
 position = Vector2( 537.418, 268.529 )
 rotation = -0.0486798
 texture = ExtResource( 7 )
 offset = Vector2( 256, -100 )
 
-[node name="Beam2" type="Sprite" parent="CanvasLayer/Areas/Cave/Control"]
+[node name="Beam2" type="Sprite" parent="CanvasLayer/Areas/Cave"]
 modulate = Color( 0.898039, 0.831373, 0.466667, 0.384314 )
 position = Vector2( 537.418, 268.529 )
 rotation = 1.42974
 texture = ExtResource( 7 )
 offset = Vector2( 256, -100 )
 
-[node name="Beam3" type="Sprite" parent="CanvasLayer/Areas/Cave/Control/Beam2"]
+[node name="Beam3" type="Sprite" parent="CanvasLayer/Areas/Cave/Beam2"]
 modulate = Color( 0.898039, 0.831373, 0.466667, 1 )
 rotation = 0.0489767
 scale = Vector2( 1, 0.592873 )
 texture = ExtResource( 7 )
 offset = Vector2( 256, -100 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Areas/Cave/Control"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Areas/Cave"]
 anims/Default = SubResource( 6 )
 script = ExtResource( 31 )
 
@@ -476,16 +468,16 @@ __meta__ = {
 }
 
 [node name="Beam" type="Sprite" parent="CanvasLayer/Areas/Forrest/Control"]
-modulate = Color( 0.898039, 0.831373, 0.466667, 0.0601703 )
+modulate = Color( 0.898039, 0.831373, 0.466667, 0.0684481 )
 position = Vector2( 537.418, 268.529 )
-rotation = 2.2318
+rotation = 2.20842
 texture = ExtResource( 7 )
 offset = Vector2( 256, -100 )
 
 [node name="Beam2" type="Sprite" parent="CanvasLayer/Areas/Forrest/Control"]
-modulate = Color( 0.898039, 0.831373, 0.466667, 0.334342 )
+modulate = Color( 0.898039, 0.831373, 0.466667, 0.327467 )
 position = Vector2( 537.418, 268.529 )
-rotation = 1.23958
+rotation = 1.21342
 texture = ExtResource( 7 )
 offset = Vector2( 256, -100 )
 
@@ -535,14 +527,14 @@ texture_normal = ExtResource( 29 )
 expand = true
 
 [node name="Smoke" type="Sprite" parent="CanvasLayer/Areas/Graveyard"]
-modulate = Color( 0.529412, 0.462745, 0.403922, 0.0319827 )
-position = Vector2( 1090.75, 451.867 )
+modulate = Color( 0.529412, 0.462745, 0.403922, 0.437769 )
+position = Vector2( -33.2422, 451.867 )
 scale = Vector2( 1.64082, 1.64082 )
 texture = ExtResource( 32 )
 
 [node name="Smoke2" type="Sprite" parent="CanvasLayer/Areas/Graveyard"]
-modulate = Color( 0.341176, 0.305882, 0.305882, 0.0325257 )
-position = Vector2( 796.573, 581.975 )
+modulate = Color( 0.341176, 0.305882, 0.305882, 0.427074 )
+position = Vector2( -387.087, 581.975 )
 scale = Vector2( 1.64082, 0.920814 )
 texture = ExtResource( 32 )
 
