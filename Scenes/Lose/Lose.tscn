@@ -1,13 +1,161 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Win/Title.cs" type="Script" id=1]
 [ext_resource path="res://Assets/GameOver.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Lose/LoseFair.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/UI_Theme.tres" type="Theme" id=4]
+[ext_resource path="res://Scenes/Game/PlayAnimation.cs" type="Script" id=5]
+[ext_resource path="res://Scenes/Title/Smoke.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Title/Background.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/Title/Glow.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Default"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.3, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.643137 ), Color( 0, 0, 0, 0.52549 ), Color( 0, 0, 0, 0.643137 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Smoke:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 850.445, 908.589 ), Vector2( -214.245, -259.928 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Smoke2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2, 2.1, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 333.202, 287.519 ), Vector2( -332.985, -289.282 ), Vector2( 923.826, 1028.68 ), Vector2( 333.202, 287.519 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Smoke2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Smoke3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -77.6192, 960.996 ), Vector2( 1305.27, -280.405 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Smoke4:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2, 2.1, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 410.932, 440.409 ), Vector2( 1294.6, -304.432 ), Vector2( -211.192, 945.779 ), Vector2( 410.932, 440.409 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Smoke4:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Glow:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.384314 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.384314 ) ]
+}
 
 [node name="Node2D" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.534205 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Smoke" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 318.1, 324.33 )
+rotation = 0.150619
+scale = Vector2( 2.42686, 2.42686 )
+texture = ExtResource( 6 )
+
+[node name="Smoke2" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 842.361, 926.451 )
+rotation = 0.0574199
+scale = Vector2( 3.19742, 3.19742 )
+texture = ExtResource( 6 )
+
+[node name="Smoke3" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 613.828, 340.296 )
+rotation = 1.61798
+scale = Vector2( 3.19742, 3.19742 )
+texture = ExtResource( 6 )
+
+[node name="Smoke4" type="Sprite" parent="CanvasLayer"]
+position = Vector2( -125.382, 876.073 )
+rotation = 1.61798
+scale = Vector2( 3.19742, 3.19742 )
+texture = ExtResource( 6 )
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchor_right = 1.0
@@ -17,6 +165,12 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Glow" type="Sprite" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0.196078 )
+position = Vector2( 489.32, 279.655 )
+scale = Vector2( 2.17073, 1.64062 )
+texture = ExtResource( 8 )
 
 [node name="Title2" type="Button" parent="CanvasLayer"]
 anchor_left = 0.4
@@ -31,6 +185,10 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+anims/Default = SubResource( 1 )
+script = ExtResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
