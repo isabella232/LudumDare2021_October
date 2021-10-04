@@ -318,11 +318,13 @@ __meta__ = {
 }
 
 [node name="Witch" type="TextureRect" parent="CanvasLayer/Areas"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 35 )
 script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Areas/Witch"]
 margin_left = 61.4272
@@ -365,7 +367,7 @@ texture = ExtResource( 24 )
 position = Vector2( 417.805, 98.7781 )
 scale = Vector2( 1e-05, 1e-05 )
 frames = SubResource( 3 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="Cave" type="TextureRect" parent="CanvasLayer/Areas"]
@@ -579,6 +581,7 @@ anims/Default = SubResource( 6 )
 script = ExtResource( 31 )
 
 [node name="Lake" type="TextureRect" parent="CanvasLayer/Areas"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 13 )
