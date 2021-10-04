@@ -62,9 +62,9 @@ __meta__ = {
 }
 
 [node name="Beam" type="Sprite" parent="CanvasLayer"]
-modulate = Color( 1, 1, 1, 0.391828 )
+modulate = Color( 1, 1, 1, 0.452142 )
 position = Vector2( 495.376, 335.478 )
-rotation = 1.04064
+rotation = 5.73058
 texture = ExtResource( 5 )
 offset = Vector2( -256, 128 )
 
@@ -106,7 +106,7 @@ offset = Vector2( -256, 128 )
 [node name="Beam2" type="Sprite" parent="CanvasLayer"]
 modulate = Color( 1, 1, 1, 0.255593 )
 position = Vector2( 495.376, 335.478 )
-rotation = 5.08477
+rotation = 14.3652
 texture = ExtResource( 5 )
 offset = Vector2( -256, 128 )
 
