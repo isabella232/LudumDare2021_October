@@ -1,12 +1,11 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Scenes/Game/Game.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Game/AreaSelection.cs" type="Script" id=2]
-[ext_resource path="res://Assets/Witch.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Witch/Witch_neutral.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Game/TakeToWitch.cs" type="Script" id=4]
 [ext_resource path="res://Assets/Cave/Cave.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Cave/item_mushroom.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Cave/Gems.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/Game/Witch.cs" type="Script" id=8]
 [ext_resource path="res://Scenes/Game/Areas.cs" type="Script" id=9]
 [ext_resource path="res://Assets/Forrest/Bunny.png" type="Texture" id=10]
@@ -17,7 +16,7 @@
 [ext_resource path="res://Assets/Graveyard/Shovel.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Graveyard/Graveyard.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Lake/item_duck.png" type="Texture" id=17]
-[ext_resource path="res://Assets/Lake/item_reed.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Lake/item_seaweed.png" type="Texture" id=18]
 [ext_resource path="res://Assets/Witch/Annoyed/Annoy0001.png" type="Texture" id=19]
 [ext_resource path="res://Assets/Witch/Annoyed/Annoy0004.png" type="Texture" id=20]
 [ext_resource path="res://Assets/Witch/Annoyed/Annoy0005.png" type="Texture" id=21]
@@ -26,7 +25,7 @@
 [ext_resource path="res://Assets/Witch/Heart.png" type="Texture" id=24]
 [ext_resource path="res://Assets/UI_Theme.tres" type="Theme" id=25]
 [ext_resource path="res://Assets/Casual Theme Loop #2.wav" type="AudioStream" id=26]
-[ext_resource path="res://Assets/Cave/item_gem.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Cave/Gems.png" type="Texture" id=27]
 [ext_resource path="res://Assets/Forrest/item_pinecone.png" type="Texture" id=28]
 [ext_resource path="res://Assets/Graveyard/item_crow.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Graveyard/item_skull.png" type="Texture" id=30]
@@ -120,7 +119,6 @@ __meta__ = {
 }
 
 [node name="Witch" type="ColorRect" parent="CanvasLayer/Areas"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.85098, 0.580392, 0.580392, 1 )
@@ -130,10 +128,10 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Areas/Witch"]
-margin_left = 1.0
-margin_top = -5.0
-margin_right = 575.0
-margin_bottom = 679.0
+margin_left = 61.4272
+margin_top = -1.0
+margin_right = 577.427
+margin_bottom = 613.0
 texture = ExtResource( 3 )
 expand = true
 __meta__ = {
@@ -162,7 +160,7 @@ texture = ExtResource( 24 )
 position = Vector2( 417.805, 98.7781 )
 scale = Vector2( 1e-05, 1e-05 )
 frames = SubResource( 3 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="Cave" type="TextureRect" parent="CanvasLayer/Areas"]
@@ -192,7 +190,7 @@ margin_top = 311.482
 margin_right = 970.078
 margin_bottom = 567.482
 rect_scale = Vector2( 0.380818, 0.380818 )
-texture_normal = ExtResource( 7 )
+texture_normal = ExtResource( 27 )
 
 [node name="Gem" type="TextureButton" parent="CanvasLayer/Areas/Cave"]
 margin_left = 320.078
@@ -268,6 +266,7 @@ texture_normal = ExtResource( 29 )
 expand = true
 
 [node name="Lake" type="TextureRect" parent="CanvasLayer/Areas"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 13 )

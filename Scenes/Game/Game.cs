@@ -47,7 +47,7 @@ public class Game : Node
         ShowAreaSelection();
         HidePopup();
 
-        this.FindChild<Witch>().SetText(NextClue());
+        this.FindChild<Witch>().SetText(Witch.Mood.neutral, NextClue());
         foreach (var button in this.FindChild<TakeToWitch>().FindChildren<Button>())
         {
             if (button.Name == "Yes")
@@ -60,19 +60,19 @@ public class Game : Node
                     var witch = this.FindChild<Witch>();
                     if (wanted_item == picked_item)
                     {
-                        witch.SetText(success_quips.GetRandom());
+                        witch.SetText(Witch.Mood.happy, success_quips.GetRandom());
                         witch.FindChild<AnimationPlayer>().Play("Success");
                         wins++;
                     }
                     else
                     {
-                        witch.SetText(failure_quips.GetRandom());
+                        witch.SetText(Witch.Mood.angry, failure_quips.GetRandom());
                         witch.FindChild<AnimationPlayer>().Play("Failure");
                     }
 
                     Coroutine.DelaySeconds(3f, () =>
                     {
-                        witch.SetText(NextClue());
+                        witch.SetText(Witch.Mood.neutral, NextClue());
                         ShowAreaSelection();
                         count++;
                         if (count > 5)
