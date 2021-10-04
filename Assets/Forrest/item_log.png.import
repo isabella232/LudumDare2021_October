@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/item_fish.png-286fc45cb1760d2c12d548bb36e3d086.stex"
+path="res://.import/item_log.png-83aba4ae4a1829e5d15ddaa97cf1963e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Lake/item_fish.png"
-dest_files=[ "res://.import/item_fish.png-286fc45cb1760d2c12d548bb36e3d086.stex" ]
+source_file="res://Assets/Forrest/item_log.png"
+dest_files=[ "res://.import/item_log.png-83aba4ae4a1829e5d15ddaa97cf1963e.stex" ]
 
 [params]
 

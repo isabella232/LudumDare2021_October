@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/item_gem.png-41e211eee347a99a910d29730c3473d5.stex"
+path="res://.import/item_seaweed.png-35e27a609cbb0b5b32b0ba6856c8bb6d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Cave/item_gem.png"
-dest_files=[ "res://.import/item_gem.png-41e211eee347a99a910d29730c3473d5.stex" ]
+source_file="res://Assets/Lake/item_seaweed.png"
+dest_files=[ "res://.import/item_seaweed.png-35e27a609cbb0b5b32b0ba6856c8bb6d.stex" ]
 
 [params]
 

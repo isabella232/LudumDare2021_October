@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/item_reed.png-2726e67df97538ab1b87b7714f3e0123.stex"
+path="res://.import/Lose_1_fried.png-3f12f39f360437be9c1876ce16b42f9f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Lake/item_reed.png"
-dest_files=[ "res://.import/item_reed.png-2726e67df97538ab1b87b7714f3e0123.stex" ]
+source_file="res://Assets/Player/Lose_1_fried.png"
+dest_files=[ "res://.import/Lose_1_fried.png-3f12f39f360437be9c1876ce16b42f9f.stex" ]
 
 [params]
 
