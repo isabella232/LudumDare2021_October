@@ -31,12 +31,12 @@ public class Game : Node
     public override void _Ready()
     {
 
-        if (this.TryFindChild<AudioStreamPlayer>(out var player))
+        if (this.TryFindChild<AudioStreamPlayer>(out var bgm))
         {
-            player.OnProcess(delta =>
+            bgm.OnProcess(delta =>
             {
-                if (!player.Playing)
-                    player.Play();
+                if (!bgm.Playing)
+                    bgm.Play();
             });
         }
         else Debug.Log("Could not find bgm player");
@@ -54,7 +54,6 @@ public class Game : Node
             {
                 button.OnButtonDown(() =>
                 {
-                    WalkingSFX.Play();
                     HidePopup();
                     GoTo(Game_Areas.Home);
                     var witch = this.FindChild<Witch>();
@@ -147,34 +146,78 @@ public class Game : Node
         switch (wanted_item)
         {
             case items.Mushroom:
-                return "Retrieve an item that’s truly magical";
+                return new string[]{
+                    "Retrieve an item that’s truly magical",
+                    "This item lives in a dark dark place.. I don't mean me!"
+                    }.GetRandom();
+            
             case items.Glow_worm:
-                return "I need to see easier";
+                return new string[]{
+                    "I need this item to attact children",
+                    "I need to see easier"
+                    }.GetRandom();
+            
             case items.Gem:
-                return "I like a healthy glow as much as the next old hag";
+                return new string[]{
+                    "I like a healthy glow as much as the next old hag",
+                    "A must-have altar item"
+                    }.GetRandom();
 
             case items.Rabbit:
-                return "The potion needs more kick";
+                return new string[]{
+                    "The potion needs more kick",
+                    "This item is common in Ostara rituals"
+                    }.GetRandom(); 
+            
             case items.Pinecone:
-                return "Some animals eat these ..I don’t know why";
+                return new string[]{
+                    "Some animals eat these ..I don’t know why",
+                    "I hang these around the house (it helps with the smell)"
+                }.GetRandom(); 
+
             case items.Log:
-                return "You need one for yuletide";
+                return  new string[]{
+                    "You need one for yuletide",
+                    "This item is used to make houses, when they should be made out of gingerbread"
+                }.GetRandom();
 
             case items.Seaweed:
-                return "This item reminds me of my fingers";
+                return new string[]{
+                    "This item reminds me of my fingers",
+                     "I use this item for salads; I’m on a health kick."
+                }.GetRandom(); 
+
             case items.Duck:
-                return "If I catch one I’ll eat it ";
+                return new string[]{
+                    "If I catch one I’ll eat it ",
+                    "The young ones are cute ..I guess"
+                }.GetRandom();
+                
             case items.Net:
-                return "It’s like a web";
+                return new string[]{
+                    "It’s like a web",
+                    "I like to throw this item at children"
+                }.GetRandom(); 
 
             case items.Skull:
-                return "Retrieve my favourite decayed item";
+                return new string[]{
+                    "Retrieve my favourite decayed item",
+                    "To get this item or not get this item, that is the question"
+                }.GetRandom(); 
+
             case items.Shovel:
-                return "The potion needs more depth";
+                return new string[]{
+                    "The potion needs more depth",
+                    "So it turns out, you can’t ride this item instead"
+                }.GetRandom();
+
             case items.Crow:
-                return "Go fetch my friend";
-            
-            default: 
+                return new string[]{
+                    "Go fetch my friend",
+                    "This item reminds me of Samhaim"
+                }.GetRandom();
+
+            default:
                 return "I don't know anymore...";
         }
     }

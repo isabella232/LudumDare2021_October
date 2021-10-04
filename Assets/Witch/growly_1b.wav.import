@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/growly_1b.wav-546ff2c06c91e45c2049c004ca7e8314.sample"
+
+[deps]
+
+source_file="res://Assets/Witch/growly_1b.wav"
+dest_files=[ "res://.import/growly_1b.wav-546ff2c06c91e45c2049c004ca7e8314.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -119,6 +119,7 @@ __meta__ = {
 }
 
 [node name="Witch" type="ColorRect" parent="CanvasLayer/Areas"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.85098, 0.580392, 0.580392, 1 )
@@ -160,11 +161,9 @@ texture = ExtResource( 24 )
 position = Vector2( 417.805, 98.7781 )
 scale = Vector2( 1e-05, 1e-05 )
 frames = SubResource( 3 )
-frame = 3
 playing = true
 
 [node name="Cave" type="TextureRect" parent="CanvasLayer/Areas"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 5 )
@@ -191,6 +190,9 @@ margin_right = 970.078
 margin_bottom = 567.482
 rect_scale = Vector2( 0.380818, 0.380818 )
 texture_normal = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Gem" type="TextureButton" parent="CanvasLayer/Areas/Cave"]
 margin_left = 320.078
