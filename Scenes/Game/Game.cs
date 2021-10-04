@@ -44,10 +44,24 @@ public class Game : Node
 
         var areas = this.FindChild<Areas>();
         GoTo(Game_Areas.Home);
-        ShowAreaSelection();
+        HideAreaSelection();
         HidePopup();
 
-        this.FindChild<Witch>().SetText(Witch.Mood.neutral, NextClue());
+        var witch = this.FindChild<Witch>();
+
+        witch.SetText(Witch.Mood.happy, "If you can fetch me that which I desire, imortality awaits!!");
+        Coroutine.DelaySeconds(5f, () =>
+        {
+            witch.SetText(Witch.Mood.angry, "However if you should fail... Well you look like you'd go well with a little salt.");
+
+            Coroutine.DelaySeconds(5f, () =>
+            {
+                ShowAreaSelection();
+                witch.SetText(Witch.Mood.neutral, NextClue());
+            });
+        });
+
+
         foreach (var button in this.FindChild<TakeToWitch>().FindChildren<Button>())
         {
             if (button.Name == "Yes")
@@ -56,7 +70,6 @@ public class Game : Node
                 {
                     HidePopup();
                     GoTo(Game_Areas.Home);
-                    var witch = this.FindChild<Witch>();
                     if (wanted_item == picked_item)
                     {
                         witch.SetText(Witch.Mood.happy, success_quips.GetRandom());
@@ -71,14 +84,34 @@ public class Game : Node
 
                     Coroutine.DelaySeconds(3f, () =>
                     {
-                        witch.SetText(Witch.Mood.neutral, NextClue());
-                        ShowAreaSelection();
                         count++;
-                        if (count > 5)
+                        if (count == 5)
                         {
                             if (wins >= 3)
-                                Scene.Load("res://Scenes/Win/Win.tscn");
-                            else Scene.Load("res://Scenes/Lose/Lose.tscn");
+                            {
+                                string[] win_quips = new string[]{
+                                    "As promised the potion is yours",
+                                    "Bah take it you theif",
+                                    "Kekeke very good, very good"
+                                };
+                                witch.SetText(Witch.Mood.happy, win_quips.GetRandom());
+                                Coroutine.DelaySeconds(3f, () => Scene.Load("res://Scenes/Win/Win.tscn"));
+                            }
+                            else
+                            {
+                                string[] lose_quips = new string[]{
+                                    "Baaah, in the pot you go!!",
+                                    "You're so stupid I'll proably get indegestion",
+                                    "Ahhh, just in time for dinner!"
+                                };
+                                witch.SetText(Witch.Mood.angry, lose_quips.GetRandom());
+                                Coroutine.DelaySeconds(3f, () => Scene.Load("res://Scenes/Lose/Lose.tscn"));
+                            }
+                        }
+                        else
+                        {
+                            witch.SetText(Witch.Mood.neutral, NextClue());
+                            ShowAreaSelection();
                         }
                     });
                 });
@@ -150,13 +183,13 @@ public class Game : Node
                     "Retrieve an item that’s truly magical",
                     "This item lives in a dark dark place.. I don't mean me!"
                     }.GetRandom();
-            
+
             case items.Glow_worm:
                 return new string[]{
                     "I need this item to attact children",
                     "I need to see easier"
                     }.GetRandom();
-            
+
             case items.Gem:
                 return new string[]{
                     "I like a healthy glow as much as the next old hag",
@@ -167,16 +200,16 @@ public class Game : Node
                 return new string[]{
                     "The potion needs more kick",
                     "This item is common in Ostara rituals"
-                    }.GetRandom(); 
-            
+                    }.GetRandom();
+
             case items.Pinecone:
                 return new string[]{
                     "Some animals eat these ..I don’t know why",
                     "I hang these around the house (it helps with the smell)"
-                }.GetRandom(); 
+                }.GetRandom();
 
             case items.Log:
-                return  new string[]{
+                return new string[]{
                     "You need one for yuletide",
                     "This item is used to make houses, when they should be made out of gingerbread"
                 }.GetRandom();
@@ -185,25 +218,25 @@ public class Game : Node
                 return new string[]{
                     "This item reminds me of my fingers",
                      "I use this item for salads; I’m on a health kick."
-                }.GetRandom(); 
+                }.GetRandom();
 
             case items.Duck:
                 return new string[]{
                     "If I catch one I’ll eat it ",
                     "The young ones are cute ..I guess"
                 }.GetRandom();
-                
+
             case items.Net:
                 return new string[]{
                     "It’s like a web",
                     "I like to throw this item at children"
-                }.GetRandom(); 
+                }.GetRandom();
 
             case items.Skull:
                 return new string[]{
                     "Retrieve my favourite decayed item",
                     "To get this item or not get this item, that is the question"
-                }.GetRandom(); 
+                }.GetRandom();
 
             case items.Shovel:
                 return new string[]{
