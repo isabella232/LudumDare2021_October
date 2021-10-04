@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/WinFair.wav-43b8cdbcd6065da6dbb91be1c3ddf5ab.sample"
+
+[deps]
+
+source_file="res://Scenes/Win/WinFair.wav"
+dest_files=[ "res://.import/WinFair.wav-43b8cdbcd6065da6dbb91be1c3ddf5ab.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
