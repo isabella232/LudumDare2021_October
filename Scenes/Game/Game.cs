@@ -3,14 +3,21 @@ using System;
 
 public enum items
 {
-    gem,
-    skull,
-    bunny,
-    squirrel,
-    eyeball,
-    shovel,
-    fish,
-    net
+    Mushroom,
+    Glow_worm,
+    Gem,
+
+    Rabbit,
+    Pinecone,
+    Log,
+
+    Seaweed,
+    Duck,
+    Net,
+
+    Skull,
+    Shovel,
+    Crow,
 }
 
 
@@ -139,17 +146,36 @@ public class Game : Node
         Debug.Log(wanted_item);
         switch (wanted_item)
         {
-            default:
-            {
-                string[] clues = new string[]{
-                    "I want an item that makes me sing",
-                    "I want something that gives you wings",
-                    "I want a hareball",
-                    "I want to puke",
-                    "No one can see these pretties"
-                };
-                return clues.GetRandom();
-            }
+            case items.Mushroom:
+                return "Retrieve an item that’s truly magical";
+            case items.Glow_worm:
+                return "I need to see easier";
+            case items.Gem:
+                return "I like a healthy glow as much as the next old hag";
+
+            case items.Rabbit:
+                return "The potion needs more kick";
+            case items.Pinecone:
+                return "Some animals eat these ..I don’t know why";
+            case items.Log:
+                return "You need one for yuletide";
+
+            case items.Seaweed:
+                return "This item reminds me of my fingers";
+            case items.Duck:
+                return "If I catch one I’ll eat it ";
+            case items.Net:
+                return "It’s like a web";
+
+            case items.Skull:
+                return "Retrieve my favourite decayed item";
+            case items.Shovel:
+                return "The potion needs more depth";
+            case items.Crow:
+                return "Go fetch my friend";
+            
+            default: 
+                return "I don't know anymore...";
         }
     }
 

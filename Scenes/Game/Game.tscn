@@ -1,11 +1,11 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Scenes/Game/Game.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Game/AreaSelection.cs" type="Script" id=2]
 [ext_resource path="res://Assets/Witch.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Game/TakeToWitch.cs" type="Script" id=4]
 [ext_resource path="res://Assets/Cave/Cave.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Cave/Skull.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Cave/item_mushroom.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Cave/Gems.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/Game/Witch.cs" type="Script" id=8]
 [ext_resource path="res://Scenes/Game/Areas.cs" type="Script" id=9]
@@ -16,8 +16,8 @@
 [ext_resource path="res://Assets/Forrest/Squirrel.png" type="Texture" id=14]
 [ext_resource path="res://Assets/Graveyard/Shovel.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Graveyard/Graveyard.png" type="Texture" id=16]
-[ext_resource path="res://Assets/Lake/Fish.png" type="Texture" id=17]
-[ext_resource path="res://Assets/Graveyard/Eyeball.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Lake/item_duck.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Lake/item_reed.png" type="Texture" id=18]
 [ext_resource path="res://Assets/Witch/Annoyed/Annoy0001.png" type="Texture" id=19]
 [ext_resource path="res://Assets/Witch/Annoyed/Annoy0004.png" type="Texture" id=20]
 [ext_resource path="res://Assets/Witch/Annoyed/Annoy0005.png" type="Texture" id=21]
@@ -26,6 +26,10 @@
 [ext_resource path="res://Assets/Witch/Heart.png" type="Texture" id=24]
 [ext_resource path="res://Assets/UI_Theme.tres" type="Theme" id=25]
 [ext_resource path="res://Assets/Casual Theme Loop #2.wav" type="AudioStream" id=26]
+[ext_resource path="res://Assets/Cave/item_gem.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Forrest/item_pinecone.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Graveyard/item_crow.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Graveyard/item_skull.png" type="Texture" id=30]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Failure"
@@ -158,7 +162,7 @@ texture = ExtResource( 24 )
 position = Vector2( 417.805, 98.7781 )
 scale = Vector2( 1e-05, 1e-05 )
 frames = SubResource( 3 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Cave" type="TextureRect" parent="CanvasLayer/Areas"]
@@ -171,7 +175,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Skull" type="TextureButton" parent="CanvasLayer/Areas/Cave"]
+[node name="Mushroom" type="TextureButton" parent="CanvasLayer/Areas/Cave"]
 margin_left = 204.476
 margin_top = 400.477
 margin_right = 460.476
@@ -182,13 +186,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Gem" type="TextureButton" parent="CanvasLayer/Areas/Cave"]
+[node name="Glow_worm" type="TextureButton" parent="CanvasLayer/Areas/Cave"]
 margin_left = 714.078
 margin_top = 311.482
 margin_right = 970.078
 margin_bottom = 567.482
 rect_scale = Vector2( 0.380818, 0.380818 )
 texture_normal = ExtResource( 7 )
+
+[node name="Gem" type="TextureButton" parent="CanvasLayer/Areas/Cave"]
+margin_left = 320.078
+margin_top = 331.482
+margin_right = 576.078
+margin_bottom = 587.482
+rect_scale = Vector2( 0.380818, 0.380818 )
+texture_normal = ExtResource( 27 )
 
 [node name="Forrest" type="TextureRect" parent="CanvasLayer/Areas"]
 visible = false
@@ -200,7 +212,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bunny" type="TextureButton" parent="CanvasLayer/Areas/Forrest"]
+[node name="Rabbit" type="TextureButton" parent="CanvasLayer/Areas/Forrest"]
 margin_left = 513.0
 margin_top = 399.0
 margin_right = 609.0
@@ -208,11 +220,19 @@ margin_bottom = 495.0
 texture_normal = ExtResource( 10 )
 expand = true
 
-[node name="squirrel" type="TextureButton" parent="CanvasLayer/Areas/Forrest"]
+[node name="Pinecone" type="TextureButton" parent="CanvasLayer/Areas/Forrest"]
 margin_left = 92.5254
 margin_top = 378.977
 margin_right = 188.525
 margin_bottom = 474.977
+texture_normal = ExtResource( 28 )
+expand = true
+
+[node name="Log" type="TextureButton" parent="CanvasLayer/Areas/Forrest"]
+margin_left = 313.525
+margin_top = 329.977
+margin_right = 409.525
+margin_bottom = 425.977
 texture_normal = ExtResource( 14 )
 expand = true
 
@@ -223,15 +243,15 @@ anchor_bottom = 1.0
 texture = ExtResource( 16 )
 expand = true
 
-[node name="eyeball" type="TextureButton" parent="CanvasLayer/Areas/Graveyard"]
+[node name="Skull" type="TextureButton" parent="CanvasLayer/Areas/Graveyard"]
 margin_left = 104.973
 margin_top = 356.946
 margin_right = 206.973
 margin_bottom = 458.946
-texture_normal = ExtResource( 18 )
+texture_normal = ExtResource( 30 )
 expand = true
 
-[node name="shovel" type="TextureButton" parent="CanvasLayer/Areas/Graveyard"]
+[node name="Shovel" type="TextureButton" parent="CanvasLayer/Areas/Graveyard"]
 margin_left = 601.533
 margin_top = 239.48
 margin_right = 703.533
@@ -239,29 +259,50 @@ margin_bottom = 341.48
 texture_normal = ExtResource( 15 )
 expand = true
 
+[node name="Crow" type="TextureButton" parent="CanvasLayer/Areas/Graveyard"]
+margin_left = 804.533
+margin_top = 76.48
+margin_right = 906.533
+margin_bottom = 178.48
+texture_normal = ExtResource( 29 )
+expand = true
+
 [node name="Lake" type="TextureRect" parent="CanvasLayer/Areas"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 13 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="fish" type="TextureButton" parent="CanvasLayer/Areas/Lake"]
+[node name="Seaweed" type="TextureButton" parent="CanvasLayer/Areas/Lake"]
 margin_left = 684.293
 margin_top = 407.67
 margin_right = 786.293
 margin_bottom = 509.67
+texture_normal = ExtResource( 18 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Duck" type="TextureButton" parent="CanvasLayer/Areas/Lake"]
+margin_left = 162.371
+margin_top = 433.032
+margin_right = 264.371
+margin_bottom = 535.032
 texture_normal = ExtResource( 17 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="net" type="TextureButton" parent="CanvasLayer/Areas/Lake"]
-margin_left = 162.371
-margin_top = 433.032
-margin_right = 264.371
-margin_bottom = 535.032
+[node name="Net" type="TextureButton" parent="CanvasLayer/Areas/Lake"]
+margin_left = 449.371
+margin_top = 482.032
+margin_right = 551.371
+margin_bottom = 584.032
 texture_normal = ExtResource( 12 )
 expand = true
 __meta__ = {
