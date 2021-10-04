@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/item_lichen.png-582f2db6ff5c782cdae7989bf3865583.stex"
+path="res://.import/Win_1_king.png-d2e5ab724613ad370659e192d23997bb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Graveyard/item_lichen.png"
-dest_files=[ "res://.import/item_lichen.png-582f2db6ff5c782cdae7989bf3865583.stex" ]
+source_file="res://Assets/Player/Win_1_king.png"
+dest_files=[ "res://.import/Win_1_king.png-d2e5ab724613ad370659e192d23997bb.stex" ]
 
 [params]
 
