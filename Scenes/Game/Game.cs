@@ -24,9 +24,21 @@ public class Game : Node
     public override void _Ready()
     {
 
+        if (this.TryFindChild<AudioStreamPlayer>(out var player))
+        {
+            player.OnProcess(delta =>
+            {
+                if (!player.Playing)
+                    player.Play();
+            });
+        }
+        else Debug.Log("Could not find bgm player");
+
+
         var areas = this.FindChild<Areas>();
         GoTo(Game_Areas.Home);
         ShowAreaSelection();
+        HidePopup();
 
         this.FindChild<Witch>().SetText(NextClue());
         foreach (var button in this.FindChild<TakeToWitch>().FindChildren<Button>())
@@ -35,6 +47,7 @@ public class Game : Node
             {
                 button.OnButtonDown(() =>
                 {
+                    WalkingSFX.Play();
                     HidePopup();
                     GoTo(Game_Areas.Home);
                     var witch = this.FindChild<Witch>();
@@ -42,13 +55,14 @@ public class Game : Node
                     {
                         witch.SetText(success_quips.GetRandom());
                         witch.FindChild<AnimationPlayer>().Play("Success");
-                        wins ++;
+                        wins++;
                     }
                     else
                     {
                         witch.SetText(failure_quips.GetRandom());
                         witch.FindChild<AnimationPlayer>().Play("Failure");
                     }
+
                     Coroutine.DelaySeconds(3f, () =>
                     {
                         witch.SetText(NextClue());
@@ -121,7 +135,7 @@ public class Game : Node
     string NextClue()
     {
         wanted_item = Enum<items>.Values.GetRandom();
-        
+
         Debug.Log(wanted_item);
         switch (wanted_item)
         {

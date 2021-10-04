@@ -91,7 +91,7 @@ namespace GameSystems
                 Scene.Current.AddChild(camera);
                 camera.Current = true;
 
-                Coroutine.Start(() => camera.IsValid(), () =>
+                Coroutine.Start(() =>
                 {
                     float delta = Time.frame_time;
                     float speed = 5;
@@ -106,6 +106,7 @@ namespace GameSystems
                     camera.Transform = new Transform(new Basis(new Vector3(pitch, yaw, 0)), camera.Transform.origin);
                     velocity = velocity.lerp(-moveVector * Time.frame_time, Time.frame_time * 10f);
                     camera.Translate(velocity);
+                    return camera.IsValid();
                 });
             }
         }

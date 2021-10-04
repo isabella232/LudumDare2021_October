@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Scenes/Game/Game.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Game/AreaSelection.cs" type="Script" id=2]
@@ -24,8 +24,10 @@
 [ext_resource path="res://Assets/Witch/Annoyed/Annoy0003.png" type="Texture" id=22]
 [ext_resource path="res://Assets/Witch/Annoyed/Annoy0002.png" type="Texture" id=23]
 [ext_resource path="res://Assets/Witch/Heart.png" type="Texture" id=24]
+[ext_resource path="res://Assets/UI_Theme.tres" type="Theme" id=25]
+[ext_resource path="res://Assets/Casual Theme Loop #2.wav" type="AudioStream" id=26]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "Failure"
 length = 3.0
 step = 0.01
@@ -42,7 +44,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0.82667, 1.38667 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.04, 1.4 ), Vector2( 1e-05, 1e-05 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "Success"
 length = 3.0
 tracks/0/type = "value"
@@ -90,17 +92,20 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[sub_resource type="Gradient" id=1]
+[sub_resource type="Gradient" id=4]
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
 width = 128
 
 [node name="Node2D" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource( 1 )
+
+[node name="BGM" type="AudioStreamPlayer" parent="CanvasLayer"]
+stream = ExtResource( 26 )
 
 [node name="Areas" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
@@ -111,6 +116,7 @@ __meta__ = {
 }
 
 [node name="Witch" type="ColorRect" parent="CanvasLayer/Areas"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.85098, 0.580392, 0.580392, 1 )
@@ -140,8 +146,8 @@ text = "I Want something that goes with tea"
 autowrap = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Areas/Witch"]
-anims/Failure = SubResource( 4 )
-anims/Success = SubResource( 5 )
+anims/Failure = SubResource( 1 )
+anims/Success = SubResource( 2 )
 
 [node name="Heart" type="Sprite" parent="CanvasLayer/Areas/Witch/AnimationPlayer"]
 position = Vector2( 421.809, 121.47 )
@@ -152,7 +158,7 @@ texture = ExtResource( 24 )
 position = Vector2( 417.805, 98.7781 )
 scale = Vector2( 1e-05, 1e-05 )
 frames = SubResource( 3 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="Cave" type="TextureRect" parent="CanvasLayer/Areas"]
@@ -275,14 +281,13 @@ __meta__ = {
 }
 
 [node name="AreaSelect" type="TextureRect" parent="CanvasLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 852.0
 margin_top = 329.0
 margin_right = -17.0
 margin_bottom = -12.0
-texture = SubResource( 2 )
+texture = SubResource( 5 )
 expand = true
 script = ExtResource( 2 )
 __meta__ = {
@@ -291,6 +296,7 @@ __meta__ = {
 
 [node name="Button" type="Button" parent="CanvasLayer/AreaSelect"]
 anchor_right = 1.0
+theme = ExtResource( 25 )
 text = "Witch"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -302,6 +308,7 @@ anchor_left = 0.25
 anchor_top = 0.25
 anchor_right = 0.75
 anchor_bottom = 0.5
+theme = ExtResource( 25 )
 color = Color( 0, 0, 0, 1 )
 script = ExtResource( 4 )
 __meta__ = {

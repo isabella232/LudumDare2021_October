@@ -42,6 +42,7 @@ public class AreaSelection : TextureRect
             new_button.OnButtonDown(() => 
             {
                 game.GoTo(area);
+                WalkingSFX.Play();
             });
 
             new_button.OnProcess(delta => {
@@ -49,8 +50,6 @@ public class AreaSelection : TextureRect
                     new_button.Disabled = true;
                 else new_button.Disabled = false;
             });
-
-            new_button.OnButtonUp(() => Debug.Log("Released", area));
         }
 
         button.QueueFree();

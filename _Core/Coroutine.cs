@@ -21,7 +21,7 @@ public static class Coroutine
     /// </summary>
     public static void Start(System.Func<bool> condition, System.Action action)
     {
-        Start(() => {action(); return condition();});
+        Start(() => { action(); return condition(); });
     }
 
     /// <summary>
@@ -29,7 +29,7 @@ public static class Coroutine
     /// </summary>
     public static void Start(this IEnumerator coroutine)
     {
-        Start( () => coroutine.MoveNext());
+        Start(() => coroutine.MoveNext());
     }
 
     /// <summary>
@@ -37,11 +37,12 @@ public static class Coroutine
     /// </summary>
     public static void DelayFrames(int frames, System.Action action)
     {
-        int targetFrame = Time.frame_count + frames;
-        Start(() => {
-            if (Time.frame_count >= targetFrame)
+        int target_frame = Time.frame_count + frames;
+
+        Start( () => {
+            if (Time.frame_count > target_frame)
             {
-                action(); 
+                action();
                 return false;
             }
             return true;
@@ -50,11 +51,12 @@ public static class Coroutine
 
     public static void DelaySeconds(float seconds, System.Action action)
     {
-        float targetTime = Time.seconds_since_startup + seconds;
-        Start(() => {
-            if (Time.seconds_since_startup > targetTime)
+        float target_seconds = Time.seconds_since_startup + seconds;
+
+        Start( () => {
+            if (Time.seconds_since_startup > target_seconds)
             {
-                action(); 
+                action();
                 return false;
             }
             return true;
@@ -74,12 +76,12 @@ public static class Coroutine
     [Event]
     static void Update(Events.FrameUpdate args)
     {
-        for(int i = coroutine_count - 1; i>= 0; --i)
+        for (int i = coroutine_count - 1; i >= 0; --i)
         {
             if (!coroutines[i]())
             {
-                coroutine_count --;
-                coroutines[coroutine_count] = coroutines[i];
+                coroutine_count--;
+                coroutines[i] = coroutines[coroutine_count];
                 coroutines[coroutine_count] = default;
             }
         }
