@@ -201,15 +201,6 @@ public static class ConsoleCommand
                 break;
         }
     }
-
-    [Command("Sets specified canvas as focused")]
-    static void FocusCanvas(Command args)
-    {
-        var canvases = Scene.Current.FindChildren<Godot.CanvasLayer>();
-        int index = args.ToInt().clamp(0, canvases.Count);
-        var canvas = canvases[index];
-        canvas.FindChild<Godot.Control>()?.GrabFocus();
-    }
 }
 
 

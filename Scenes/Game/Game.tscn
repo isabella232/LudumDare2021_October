@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Scenes/Game/Game.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Game/AreaSelection.cs" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Game/TakeToWitch.cs" type="Script" id=4]
 [ext_resource path="res://Assets/Cave/Cave.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Cave/item_mushroom.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Beam.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/Game/Witch.cs" type="Script" id=8]
 [ext_resource path="res://Scenes/Game/Areas.cs" type="Script" id=9]
 [ext_resource path="res://Assets/Forrest/Bunny.png" type="Texture" id=10]
@@ -29,6 +30,8 @@
 [ext_resource path="res://Assets/Forrest/item_pinecone.png" type="Texture" id=28]
 [ext_resource path="res://Assets/Graveyard/item_crow.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Graveyard/item_skull.png" type="Texture" id=30]
+[ext_resource path="res://Scenes/Game/PlayAnimation.cs" type="Script" id=31]
+[ext_resource path="res://Assets/Smoke.png" type="Texture" id=32]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Failure"
@@ -94,6 +97,194 @@ animations = [ {
 "name": "default",
 "speed": 12.0
 } ]
+
+[sub_resource type="Animation" id=6]
+resource_name = "Default"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Beam:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.4, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.898039, 0.831373, 0.466667, 0 ), Color( 0.898039, 0.831373, 0.466667, 0.462745 ), Color( 0.898039, 0.831373, 0.466667, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Beam:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -2.78915, 137.609 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Beam2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.4, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.898039, 0.831373, 0.466667, 0.384314 ), Color( 0.898039, 0.831373, 0.466667, 0 ), Color( 0.898039, 0.831373, 0.466667, 0.0240196 ), Color( 0.898039, 0.831373, 0.466667, 0.384314 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Beam2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.4, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 81.9182, 160.23, 3.36122, 81.9182 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Default"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Beam:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.4, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.898039, 0.831373, 0.466667, 0 ), Color( 0.898039, 0.831373, 0.466667, 0.462745 ), Color( 0.898039, 0.831373, 0.466667, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Beam:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -2.78915, 137.609 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Beam2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.4, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.898039, 0.831373, 0.466667, 0.384314 ), Color( 0.898039, 0.831373, 0.466667, 0 ), Color( 0.898039, 0.831373, 0.466667, 0.0240196 ), Color( 0.898039, 0.831373, 0.466667, 0.384314 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Beam2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.4, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 81.9182, 160.23, 3.36122, 81.9182 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Default"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Smoke:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.529412, 0.462745, 0.403922, 0 ), Color( 0.529412, 0.462745, 0.403922, 1 ), Color( 0.529412, 0.462745, 0.403922, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Smoke:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -277.525, 451.867 ), Vector2( 1117.52, 451.867 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Smoke2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2.05008, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.341176, 0.305882, 0.305882, 1 ), Color( 0.341176, 0.305882, 0.305882, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Smoke2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.05008, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -440.237, 581.975 ), Vector2( -315.786, 581.975 ), Vector2( 833.97, 581.975 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Default"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Smoke:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.1, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.298039 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Smoke:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -715.738, 282.6 ), Vector2( 1735.21, 282.6 ) ]
+}
 
 [sub_resource type="Gradient" id=4]
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
@@ -161,10 +352,11 @@ texture = ExtResource( 24 )
 position = Vector2( 417.805, 98.7781 )
 scale = Vector2( 1e-05, 1e-05 )
 frames = SubResource( 3 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Cave" type="TextureRect" parent="CanvasLayer/Areas"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 5 )
@@ -203,6 +395,38 @@ margin_bottom = 587.482
 rect_scale = Vector2( 0.380818, 0.380818 )
 texture_normal = ExtResource( 27 )
 
+[node name="Control" type="Control" parent="CanvasLayer/Areas/Cave"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Beam" type="Sprite" parent="CanvasLayer/Areas/Cave/Control"]
+modulate = Color( 0.898039, 0.831373, 0.466667, 0 )
+position = Vector2( 537.418, 268.529 )
+rotation = -0.0486798
+texture = ExtResource( 7 )
+offset = Vector2( 256, -100 )
+
+[node name="Beam2" type="Sprite" parent="CanvasLayer/Areas/Cave/Control"]
+modulate = Color( 0.898039, 0.831373, 0.466667, 0.384314 )
+position = Vector2( 537.418, 268.529 )
+rotation = 1.42974
+texture = ExtResource( 7 )
+offset = Vector2( 256, -100 )
+
+[node name="Beam3" type="Sprite" parent="CanvasLayer/Areas/Cave/Control/Beam2"]
+modulate = Color( 0.898039, 0.831373, 0.466667, 1 )
+rotation = 0.0489767
+scale = Vector2( 1, 0.592873 )
+texture = ExtResource( 7 )
+offset = Vector2( 256, -100 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Areas/Cave/Control"]
+anims/Default = SubResource( 6 )
+script = ExtResource( 31 )
+
 [node name="Forrest" type="TextureRect" parent="CanvasLayer/Areas"]
 visible = false
 anchor_right = 1.0
@@ -237,12 +461,54 @@ margin_bottom = 425.977
 texture_normal = ExtResource( 14 )
 expand = true
 
+[node name="Control" type="Control" parent="CanvasLayer/Areas/Forrest"]
+modulate = Color( 1, 1, 1, 0.509804 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1372.15
+margin_top = -1122.95
+margin_right = 1372.15
+margin_bottom = -1122.95
+rect_rotation = 56.8525
+rect_scale = Vector2( 1.285, 2.45826 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Beam" type="Sprite" parent="CanvasLayer/Areas/Forrest/Control"]
+modulate = Color( 0.898039, 0.831373, 0.466667, 0.0601703 )
+position = Vector2( 537.418, 268.529 )
+rotation = 2.2318
+texture = ExtResource( 7 )
+offset = Vector2( 256, -100 )
+
+[node name="Beam2" type="Sprite" parent="CanvasLayer/Areas/Forrest/Control"]
+modulate = Color( 0.898039, 0.831373, 0.466667, 0.334342 )
+position = Vector2( 537.418, 268.529 )
+rotation = 1.23958
+texture = ExtResource( 7 )
+offset = Vector2( 256, -100 )
+
+[node name="Beam3" type="Sprite" parent="CanvasLayer/Areas/Forrest/Control/Beam2"]
+modulate = Color( 0.898039, 0.831373, 0.466667, 1 )
+rotation = 0.0489767
+scale = Vector2( 1, 0.592873 )
+texture = ExtResource( 7 )
+offset = Vector2( 256, -100 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Areas/Forrest/Control"]
+anims/Default = SubResource( 7 )
+script = ExtResource( 31 )
+
 [node name="Graveyard" type="TextureRect" parent="CanvasLayer/Areas"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 16 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Skull" type="TextureButton" parent="CanvasLayer/Areas/Graveyard"]
 margin_left = 104.973
@@ -267,6 +533,22 @@ margin_right = 906.533
 margin_bottom = 178.48
 texture_normal = ExtResource( 29 )
 expand = true
+
+[node name="Smoke" type="Sprite" parent="CanvasLayer/Areas/Graveyard"]
+modulate = Color( 0.529412, 0.462745, 0.403922, 0.0319827 )
+position = Vector2( 1090.75, 451.867 )
+scale = Vector2( 1.64082, 1.64082 )
+texture = ExtResource( 32 )
+
+[node name="Smoke2" type="Sprite" parent="CanvasLayer/Areas/Graveyard"]
+modulate = Color( 0.341176, 0.305882, 0.305882, 0.0325257 )
+position = Vector2( 796.573, 581.975 )
+scale = Vector2( 1.64082, 0.920814 )
+texture = ExtResource( 32 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Areas/Graveyard"]
+anims/Default = SubResource( 8 )
+script = ExtResource( 31 )
 
 [node name="Lake" type="TextureRect" parent="CanvasLayer/Areas"]
 visible = false
@@ -310,6 +592,16 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Areas/Lake"]
+anims/Default = SubResource( 9 )
+script = ExtResource( 31 )
+
+[node name="Smoke" type="Sprite" parent="CanvasLayer/Areas/Lake"]
+modulate = Color( 1, 1, 1, 0.298039 )
+position = Vector2( 550.585, 282.6 )
+scale = Vector2( 2.80889, 0.824997 )
+texture = ExtResource( 32 )
 
 [node name="LifeBar" type="ColorRect" parent="CanvasLayer"]
 visible = false

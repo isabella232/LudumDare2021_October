@@ -227,7 +227,7 @@ public class Game : Node
     {
         var popup = this.FindChild<TakeToWitch>();
         popup.Visible = true;
-        popup.SetText($"Take {item} to the witch?");
+        popup.SetText($"Take {item.ToString().Replace("_", " ")} to the witch?");
         HideAreaSelection();
     }
 

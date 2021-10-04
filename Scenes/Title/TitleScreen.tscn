@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Title/Quit.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Title/Start.cs" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Scenes/Title/Title_Text.png" type="Texture" id=9]
 [ext_resource path="res://Scenes/Title/StartTitleAnimation.cs" type="Script" id=10]
 [ext_resource path="res://Scenes/Title/Glow.png" type="Texture" id=11]
+[ext_resource path="res://Scenes/Title/PotGlow.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "TitleAnimation"
@@ -160,6 +161,30 @@ tracks/11/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.219608 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.219608 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/12/type = "value"
+tracks/12/path = NodePath("PotGlow:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 2.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("PotGlow:self_modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 1.2, 2.5, 3.7, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Node2D" type="Node2D"]
 
@@ -180,26 +205,26 @@ __meta__ = {
 }
 
 [node name="Smoke" type="Sprite" parent="CanvasLayer/Control"]
-position = Vector2( -46.0584, 1.6468 )
-scale = Vector2( 1.98925, 1.98925 )
+position = Vector2( 137.175, 171.66 )
+scale = Vector2( 2.24984, 2.24984 )
 texture = ExtResource( 7 )
 
 [node name="Smoke2" type="Sprite" parent="CanvasLayer/Control"]
-position = Vector2( 340.855, 200.78 )
+position = Vector2( 577.175, 367.66 )
 rotation = -3.09191
-scale = Vector2( 1.83987, 1.80615 )
+scale = Vector2( 1.46467, 1.43783 )
 texture = ExtResource( 7 )
 
 [node name="Smoke3" type="Sprite" parent="CanvasLayer/Control"]
-position = Vector2( 720.717, 211.992 )
+position = Vector2( 516.513, 357.688 )
 rotation = 2.12922
-scale = Vector2( 2.24629, 2.24629 )
+scale = Vector2( 1.77018, 1.77018 )
 texture = ExtResource( 7 )
 
 [node name="Smoke4" type="Sprite" parent="CanvasLayer/Control"]
-position = Vector2( 1174.07, -36.4233 )
+position = Vector2( 971.504, 128.72 )
 rotation = -0.962683
-scale = Vector2( 2.9137, 2.8603 )
+scale = Vector2( 2.80467, 2.75327 )
 texture = ExtResource( 7 )
 
 [node name="Pot" type="Sprite" parent="CanvasLayer/Control"]
@@ -212,13 +237,16 @@ position = Vector2( 526.773, 138.846 )
 scale = Vector2( 2.17841, 2.17841 )
 texture = ExtResource( 11 )
 
+[node name="PotGlow" type="Sprite" parent="CanvasLayer/Control"]
+position = Vector2( 506.907, 452.22 )
+texture = ExtResource( 12 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control"]
 anims/TitleAnimation = SubResource( 1 )
 script = ExtResource( 10 )
 
 [node name="Title_Text" type="Sprite" parent="CanvasLayer/Control"]
 position = Vector2( 523.923, 97.753 )
-scale = Vector2( 1.17333, 1.17333 )
 texture = ExtResource( 9 )
 
 [node name="Start" type="Button" parent="CanvasLayer"]

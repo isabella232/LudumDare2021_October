@@ -29,9 +29,12 @@ static class GUI
         {
             if (_layer.IsNull())
             {
-                _layer = new CanvasLayer();
+                if (!Scene.Current.TryFindChild(out _layer))
+                {
+                    _layer = new CanvasLayer();
+                    Coroutine.DelayFrames(1, () => Scene.Current.AddChild(_layer));
+                }
                 Layout.position = new Vector2(16, 16);
-                Coroutine.DelayFrames(1, () => Scene.Current.AddChild(_layer));
             }
             return _layer;
         }
